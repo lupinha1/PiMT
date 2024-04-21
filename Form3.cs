@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace PiMT
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
         string[] maos;
         int idJogador;
         string senhaJogador;
-            
-        public Form2(string[] maos, int idJogador, string senhaJogador)
+        public Form3(string[] maos, int idJogador, string senhaJogador)
         {
             InitializeComponent();
             this.maos = maos;
@@ -24,15 +23,12 @@ namespace PiMT
             this.senhaJogador = senhaJogador;
             ExibirMaos();
         }
-
         public void ExibirMaos()
         {
             Array.Resize(ref maos, maos.Length - 1);
-            if( maos.Length <=24 )
-            {
                 for (int i = 1; i <= maos.Length; i++)
                 {
-                    string nomePictureBox = "ptb" + i;
+                    string nomePictureBox = "pt" + i;
                     Console.WriteLine(nomePictureBox);
                     PictureBox p = Controls.Find(nomePictureBox, true).FirstOrDefault() as PictureBox;
                     string[] dados = maos[i - 1].Split(',');
@@ -66,12 +62,6 @@ namespace PiMT
                     {
                         p.Image = Properties.Resources.Triângulo1;
                     }
-                }
-            }
-            else
-            {
-                Form3 f3 = new Form3(maos, idJogador, senhaJogador);
-                f3.Show();
             }
         }
     }
